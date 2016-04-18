@@ -16,7 +16,7 @@ from setuptools import setup, find_packages
 import os
 
 # execute this file to get VERSION in the local namespace, but dont import the module
-exec(os.path.join(os.path.dirname(__file__), 'basic_models/version.py'))
+exec(open(os.path.join(os.path.dirname(__file__), 'basic_models/version.py')).read())
 
 
 def find_package_data(**packages):
