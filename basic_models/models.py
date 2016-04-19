@@ -10,9 +10,6 @@ except ImportError:
 from .managers import ActiveObjectsManager
 
 
-AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
-
-
 class NameSlug(NaturalKey, models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField()
@@ -32,10 +29,10 @@ NameSlug.natural_key_fields = ('slug',)
 
 
 class CreatedUpdatedBy(models.Model):
-    created_by = models.ForeignKey(AUTH_USER_MODEL, null=True, blank=True,
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True,
                                    related_name='+',
                                    on_delete=models.SET_NULL)
-    updated_by = models.ForeignKey(AUTH_USER_MODEL, null=True, blank=True,
+    updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True,
                                    related_name='+',
                                    on_delete=models.SET_NULL)
 
